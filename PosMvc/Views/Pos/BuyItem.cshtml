@@ -1,0 +1,32 @@
+﻿@model PosMvc.Models.Item
+@{
+    ViewBag.Title = "BuyItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <h3>@Model.Name</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-offset-4 col-lg-4">
+                    @if (Session["message"] != null)
+                    {
+                        <p class="text-warning">@Session["message"]</p>
+                        Session["message"] = null;
+                    }
+                    @using (Html.BeginForm("AddToCart", "Pos", Model))
+                    {
+                        <div class="form-group">
+                            <label for="quantity">Enter Quantity</label>
+                            @Html.TextBox("quantity", "", new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

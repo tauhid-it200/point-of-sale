@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "HOME";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="text-center">Point of Sale</h3>
+<br />
+<div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-lg-offset-2 col-lg-8">
+                    @if (Session["message"] != null)
+                    {
+                        <p class="text-info">@Session["message"]</p>
+                        Session["message"] = null;
+                    }
+                    <div class="col-lg-6">
+                        @Html.ActionLink("Start Shopping", "Home", "Pos", null, new { @class = "btn btn-primary btn-block" })
+                    </div>
+                    <div class="col-lg-6">
+                        @Html.ActionLink("Login as Admin", "AdminLogin", "Pos", null, new { @class = "btn btn-warning btn-block" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
